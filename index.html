@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anitsuki - Ücretsiz Türkçe Altyazılı Anime İzle</title>
+    <meta name="description" content="Anitsuki'de en popüler Türkçe altyazılı anime serilerini ücretsiz izleyin! En yeni ve en çok izlenenlerle anime dünyasına adım atın!" />
+    <meta name="language" content="Turkish" />
+    <meta name="geo.placename" content="Turkey" />
+    <meta name="location" content="Türkiye, TR, Turkey" />
+    <meta name="robots" content="index, follow, max-image-preview:large, noarchive" />
+    <meta name="apple-mobile-web-app-title" content="Anitsuki">
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta property="og:title" content="Anitsuki - Ücretsiz Türkçe Altyazılı Anime İzle" />
+    <meta property="og:url" content="https://www.anitsuki.com" />
+    <meta property="og:image" content="https://www.anitsuki.com/assets/aylogo.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Anitsuki'de en popüler Türkçe altyazılı anime serilerini ücretsiz izleyin! En yeni ve en çok izlenenlerle anime dünyasına adım atın!" />
+
+     <link rel="shortcut icon" href="/assets/aylogo.ico" type="image/png" />
+     <link rel="apple-touch-icon" href="/assets/aylogo.ico" type="image/png">
+
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="content">
+        <div class="videocontainer">
+            <video class="plyr" preload="metadata" autoplay playsinline muted>
+                <source src="assets/mobileversion.mp4" media="(max-width: 999px)">
+                <source src="assets/desktopversion.mp4" media="(min-width: 1000px)">
+            </video>
+            <div class="controls">
+                <button class="play"><i id="play" class="bi bi-pause-circle"></i></button>
+                <button class="mute"><i id="mute" class="bi bi-volume-mute"></i></button>
+                <button class="textbox"><i id="textbox" class="bi bi-chat-square-fill"></i></button>
+            </div>
+        </div>
+        <div class="textcontent">
+            <img src="assets/aylogo.png" alt="anitsuki">
+            <div class="title">
+                Çok Yakında
+            </div>
+            <div class="des">
+                <b>anitsuki.com</b> kısa süreli bakımda.<br>
+                Yakında tekrar buradayız!
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector(".plyr");
+            const content = document.querySelector(".content");
+            const playBtn = document.getElementById("play");
+            const muteBtn = document.getElementById("mute");
+            const textbox = document.getElementById("textbox");
+            const textContent = document.querySelector(".textcontent");
+
+            video.volume = 0.3;
+
+            function muted() {
+                video.muted = !video.muted;
+
+                if (video.muted) {
+                    muteBtn.classList.remove("bi-volume-up");
+                    muteBtn.classList.add("bi-volume-mute");
+                } else {
+                    muteBtn.classList.remove("bi-volume-mute");
+                    muteBtn.classList.add("bi-volume-up");
+                }
+            }
+
+            function playVideo() {
+                if (video.paused) {
+                    video.play();
+                    playBtn.classList.remove("bi-play-circle");
+                    playBtn.classList.add("bi-pause-circle");
+                } else {
+                    video.pause();
+                    playBtn.classList.remove("bi-pause-circle");
+                    playBtn.classList.add("bi-play-circle");
+                }
+            }
+
+            function toggleTextContent() {
+                textContent.classList.toggle("hide");
+                content.classList.toggle("hide");
+                textbox.classList.toggle("bi-chat-square-fill");
+                textbox.classList.toggle("bi-chat-square");
+            }
+
+            video.addEventListener("ended", function(){
+                playBtn.classList.remove("bi-pause-circle");
+                playBtn.classList.add("bi-play-circle");
+            })
+
+            muteBtn.addEventListener("click", muted);
+            playBtn.addEventListener("click", playVideo);
+            textbox.addEventListener("click", toggleTextContent);
+        });
+    </script>
+</body>
+</html>
